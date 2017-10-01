@@ -66,7 +66,7 @@ function buildPlaylist() {
 		}
 	}
 	var testF = ["test.csv"];
-	loadFiles(testF);
+	loadFiles(files);
 }
 
 function loadFiles(files) {
