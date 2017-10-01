@@ -1,3 +1,4 @@
+console.log("version 1");
 var csvlist = "";
 var songarray = [];
 
@@ -39,7 +40,6 @@ function hideTab(x) {
 	else if (x == "player") {
 		$("#checkbox-tab").removeClass("hidden").addClass("visible");
 		$("#player-tab").removeClass("visible").addClass("hidden");
-		clearPlaylist();
 	}
 }
 
@@ -52,6 +52,7 @@ function buildPlaylist() {
 	var checkboxes = document.getElementsByTagName("checkbox");
 	for (i=0;i<checkboxes.length;i++) {
 		if (checkboxes[i].checked) {
+			console.log(checkboxes[i].id);
 			loadDoc(checkboxes[i].id);
 		}
 	}
