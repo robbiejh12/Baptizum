@@ -45,6 +45,7 @@ function hideTab(x) {
 
 function clearPlaylist() {
 	songarray = [];
+	console.log(songarray);
 }
 
 function buildPlaylist() {
@@ -61,7 +62,8 @@ function loadDoc(doc) {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			pushToArray(this.responseText);
+			var response = this.responseText;
+			pushToArray(response);
 		}
 	};
 	xhttp.open("GET", doc, true);
@@ -69,6 +71,7 @@ function loadDoc(doc) {
 }
 
 function pushToArray(input) {
-		songarray += $.csv.toObjects(input);
-		console.log(songarray);
-    }
+	var songs = $.csv.toObjects(input);
+	songarray += songs;
+	console.log(songarray);
+}
