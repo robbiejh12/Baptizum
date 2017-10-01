@@ -1,4 +1,4 @@
-console.log("version 3");
+console.log("version 4");
 var csvlist = "";
 var songarray = [];
 var played = [];
@@ -82,6 +82,6 @@ function loadFiles(files) {
 
 function processcsv(input) {
 	var songs = $.csv.toObjects(input);
-	songarray += songs;
-	console.log(songarray);
+//	songarray.push(songs);
+	console.log(songs);
 }
