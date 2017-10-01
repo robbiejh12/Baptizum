@@ -72,6 +72,7 @@ function buildPlaylist() {
 function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
+		console.log(myurl);
 		$.get(myurl, function(data) {
 			processcsv(data);
 		});
