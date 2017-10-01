@@ -69,7 +69,7 @@ function buildPlaylist() {
 }
 
 function loadFiles(files) {
-	for (i=0;i<filess.length;i++) {
+	for (i=0;i<files.length;i++) {
 		$.ajax({
 			url: i,
 			method: 'get',
