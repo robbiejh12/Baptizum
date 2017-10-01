@@ -1,4 +1,4 @@
-console.log("version 1");
+console.log("version 2");
 var csvlist = "";
 var songarray = [];
 
@@ -49,11 +49,10 @@ function clearPlaylist() {
 }
 
 function buildPlaylist() {
-	var checkboxes = document.getElementsByTagName("checkbox");
-	for (i=0;i<checkboxes.length;i++) {
-		console.log(checkboxes[i].id);
-		if (checkboxes[i].checked) {
-			loadDoc(checkboxes[i].id);
+	var rpms = document.getElementsByClassName("rpm");
+	for (i=0;i<rpms.length;i++) {
+		if (rpms[i].checked) {
+			loadDoc(rpms[i].id);
 		}
 	}
 }
