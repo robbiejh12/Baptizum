@@ -20,6 +20,7 @@
   <script src="scripts/jquery.csv.js"></script>
   <script>
   var myarray = [];
+  var special = [];
     $(document).ready(function() {
       if(isAPIAvailable()) {
         $('#files').bind('change', handleFileSelect);
@@ -28,8 +29,8 @@
 		url: 'test.csv',
 		method: 'get',
 		success: function(data){
-        var x = data
-		console.log(x);
+        special = data
+		console.log(special);
 		}
 		});
 	  
