@@ -1,4 +1,4 @@
-console.log("version 2");
+console.log("version 3");
 var csvlist = "";
 var songarray = [];
 var played = [];
@@ -71,15 +71,12 @@ function buildPlaylist() {
 function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
-		$.ajax({
-			url: myurl,
-			method: 'get',
-			success: function(data){
-				processcsv(data);
-			}
+		$.get(myurl, function(data) {
+			processcsv(data);
 		});
 	}
 }
+
 
 function processcsv(input) {
 //	var songs = $.csv.toObjects(input);
