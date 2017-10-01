@@ -70,8 +70,9 @@ function buildPlaylist() {
 
 function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
+		var url = files[i];
 		$.ajax({
-			url: files[i],
+			url: url,
 			method: 'get',
 			success: function(data){
 				processcsv(data);
