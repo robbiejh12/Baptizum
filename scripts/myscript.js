@@ -51,8 +51,8 @@ function clearPlaylist() {
 function buildPlaylist() {
 	var checkboxes = document.getElementsByTagName("checkbox");
 	for (i=0;i<checkboxes.length;i++) {
+		console.log(checkboxes[i].id);
 		if (checkboxes[i].checked) {
-			console.log(checkboxes[i].id);
 			loadDoc(checkboxes[i].id);
 		}
 	}
