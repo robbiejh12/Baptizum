@@ -58,27 +58,30 @@ function clearPlaylist() {
 
 function buildPlaylist() {
 	var rpms = document.getElementsByClassName("rpm");
+	var files = [];
 	for (i=0;i<rpms.length;i++) {
 		if (rpms[i].checked) {
-			loadDoc(rpms[i].id);
+			var file = rpms[i] + '.csv';
+			files.push(file);
 		}
+	}
+	loadFiles(files);
+}
+
+function loadFiles(files) {
+	for (i=0;i<filess.length;i++) {
+		$.ajax({
+			url: i,
+			method: 'get',
+			success: function(data){
+				processcsv(data);
+			}
+		});
 	}
 }
 
-function loadDoc(doc) {
-	var doc = doc + ".csv"
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var response = this.responseText;
-			pushToArray(response);
-		}
-	};
-	xhttp.open("GET", doc, true);
-	xhttp.send();
-}
-
-function pushToArray(input) {
+function processcsv(input) {
 	var songs = $.csv.toObjects(input);
 	songarray += songs;
+	console.log(songarray);
 }
