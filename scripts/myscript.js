@@ -81,7 +81,7 @@ function loadFiles(files) {
 }
 
 function processcsv(input) {
-#	var songs = $.csv.toObjects(input);
-#	songarray += songs;
+//	var songs = $.csv.toObjects(input);
+//	songarray += songs;
 	console.log(input);
 }
