@@ -1,6 +1,7 @@
-console.log("version 2");
+console.log("version 1");
 var csvlist = "";
 var songarray = [];
+var played = [];
 
 $(document).ready(function(){
 	
@@ -15,7 +16,13 @@ $(document).ready(function(){
 	});
 	
 	$("#player-play").click(function(){
-		
+		var number = 0;
+		var len = songarray.length;
+		do {
+			number = Math.floor((Math.random() * len));
+		}
+		while (played.includes(number));
+		console.log(number);
 	});
 	
 	$("#player-back").click(function(){
@@ -45,7 +52,7 @@ function hideTab(x) {
 
 function clearPlaylist() {
 	songarray = [];
-	console.log(songarray);
+	played = [];
 }
 
 function buildPlaylist() {
@@ -73,5 +80,4 @@ function loadDoc(doc) {
 function pushToArray(input) {
 	var songs = $.csv.toObjects(input);
 	songarray += songs;
-	console.log(songarray);
 }
