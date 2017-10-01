@@ -61,7 +61,7 @@ function buildPlaylist() {
 	var files = [];
 	for (i=0;i<rpms.length;i++) {
 		if (rpms[i].checked) {
-			var file = rpms[i] + '.csv';
+			var file = rpms[i].id + '.csv';
 			files.push(file);
 		}
 	}
