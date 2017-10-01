@@ -1,0 +1,86 @@
+html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: arial;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	display: inline-block;
+}
+
+#header-wrapper {
+	display: flex;
+	height: 80px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: steelblue;
+}
+
+#header-title {
+	margin: auto;
+	color: snow;
+	font-size: 3em;
+	font-weight: bold;
+}
+
+#page-wrapper {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: snow;
+}
+
+#body-wrapper {
+	display: flex;
+	width: 100%;
+	padding-top: 20px;
+}
+
+#tabs-wrapper {
+	width: 40%;
+	height: 400px;
+}
+
+.visible {
+	display: inline-block;
+}
+
+.hidden {
+	display: none;
+}
+
+.flex {
+	margin: auto;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.flexbox {
+	display: flex;
+}
+
+img {
+	display: inline;
+}
+
+.control {
+	height: 25px;
+	width: 25px;
+}

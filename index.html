@@ -1,0 +1,50 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="scripts/jquery-3.2.1.min.js"></script>
+	<script src="scripts/jquery.csv.js"></script>
+	<script src="scripts/myscript.js"></script>
+</head>
+<body>
+<div id="page-wrapper">
+	<div id="header-wrapper" class="flexbox">
+		<div id="header-title" class="flex center">
+			Bap-Tizum Radio Player
+		</div>
+	</div>
+	<div id="body-wrapper" class="flexbox">
+		<div id="tabs-wrapper" class="flex">
+			<div id="player-tab" class="tab hidden">
+				<div id="player-wrapper">
+					<audio id="player">
+						<source id="player-audio" src="" type="audio/mpeg">
+					</audio>
+					<b>Now Playing: </b><span id="now-playing">Artist - Song</span>
+				</div>
+				<br><br>
+				<div id="player-controls">
+					<img id="player-back" class="control" src="icons/back.svg"></img>
+					<img id="player-play" class="control" src="icons/play.svg"></img>
+					<img id="player-next" class="control" src="icons/next-1.svg"></img>
+					<img id="player-stop" class="control" src="icons/stop.svg"></img>
+					<img id="player-return" class="control" src="icons/cancel.svg"></img>
+				</div>
+			</div>
+			<div id="checkbox-tab" class="tab visible">
+				<p style="font-weight: bold">Select RPMs:</p>
+				<input id="33" type="checkbox">33</input><br>
+				<input id="45" type="checkbox">45</input><br>
+				<input id="78" type="checkbox">78</input>
+				<p><button id="checkbox-play" type="button">Play</button></p>
+			</div>
+	</div>
+</div>
+
+
+<div id="demo">
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+</div>
+</body>
+</html>
