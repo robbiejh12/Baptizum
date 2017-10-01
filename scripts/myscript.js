@@ -10,6 +10,7 @@ $(document).ready(function(){
 	
 	$("#player-return").click(function(){
 		hideTab("player");
+		clearPlaylist();
 	});
 	
 	$("#player-play").click(function(){
@@ -42,6 +43,10 @@ function hideTab(x) {
 	}
 }
 
+function clearPlaylist() {
+	songarray = [];
+}
+
 function buildPlaylist() {
 	var checkboxes = document.getElementsByTagName("checkbox");
 	for (i=0;i<checkboxes.length;i++) {
@@ -49,7 +54,6 @@ function buildPlaylist() {
 			loadDoc(checkboxes[i].id);
 		}
 	}
-	csvListToObjects();
 }
 
 function loadDoc(doc) {
@@ -57,15 +61,14 @@ function loadDoc(doc) {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			csvlist += this.responseText;
+			pushToArray(this.responseText);
 		}
 	};
 	xhttp.open("GET", doc, true);
 	xhttp.send();
 }
 
-function csvListToObjects() {
-		var input = csvlist;
-		var songarray = $.csv.toObjects(input);
+function pushToArray(input) {
+		songarray += $.csv.toObjects(input);
 		console.log(songarray);
     }
