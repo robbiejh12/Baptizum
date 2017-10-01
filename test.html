@@ -29,7 +29,7 @@
 		url: 'test.csv',
 		method: 'get',
 		success: function(data){
-        printTable(data);
+        processcsv(data);
 		}
 		});
 	  
@@ -101,6 +101,13 @@
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
 	  }
     
+	function processcsv(file) {
+		var lines = file.split("\n");
+		for (i=0;i<lines.length;i++) {
+		myarray.push(lines[i]);
+		}
+		console.log(myarray);
+		}
   </script>
   <audio id="audio-ele" controls>
   <source id="audio-source" src="">
