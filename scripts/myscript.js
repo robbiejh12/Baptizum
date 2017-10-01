@@ -18,6 +18,7 @@ $(document).ready(function(){
 	$("#player-play").click(function(){
 		var number = 0;
 		var len = songarray.length;
+		console.log(len);
 		do {
 			number = Math.floor((Math.random() * len));
 		}
