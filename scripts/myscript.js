@@ -23,7 +23,8 @@ $(document).ready(function(){
 			number = Math.floor((Math.random() * len));
 		}
 		while (played.includes(number));
-		console.log(number);
+		played.push(number);
+		loadTrack(songarray[number]);
 	});
 	
 	$("#player-back").click(function(){
@@ -74,14 +75,15 @@ function loadFiles(files) {
 		var myurl = files[i];
 		console.log(myurl);
 		$.get(myurl, function(data) {
-			processcsv(data);
+			songarray += $csv.toObjects(data)
 		});
 	}
 }
 
-
-function processcsv(input) {
-	var songs = $.csv.toObjects(input);
-//	songarray.push(songs);
-	console.log(songs);
+function loadTrack(track) {
+	var audio = $("#player");
+	$("#player-audio").attr("src", track.url);
+	audio[0].load();
+	audio[0].play();
+	$("#now-playing").html(track.artist + " - " + track.title);
 }
