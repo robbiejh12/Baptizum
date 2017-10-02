@@ -2,6 +2,7 @@ console.log("version 4");
 var csvlist = "";
 var songarray = [];
 var played = [];
+var audio = $("#player");
 
 $(document).ready(function(){
 	
@@ -16,9 +17,9 @@ $(document).ready(function(){
 	});
 	
 	$("#player-play").click(function(){
+		audio[0].pause();
 		var number = 0;
 		var len = songarray.length;
-		console.log(len);
 		do {
 			number = Math.floor((Math.random() * len));
 		}
@@ -81,7 +82,6 @@ function loadFiles(files) {
 }
 
 function loadTrack(track) {
-	var audio = $("#player");
 	$("#player-audio").attr("src", track.url);
 	audio[0].load();
 	audio[0].play();
