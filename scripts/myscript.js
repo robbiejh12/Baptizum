@@ -77,9 +77,10 @@ function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
-			songarray += $.csv.toObjects(data)
+			songarray.push($.csv.toObjects(data));
 		});
 	}
+	console.log(songarray);
 }
 
 function loadTrack(track) {
