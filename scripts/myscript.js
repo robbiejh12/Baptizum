@@ -75,7 +75,7 @@ function loadFiles(files) {
 		var myurl = files[i];
 		console.log(myurl);
 		$.get(myurl, function(data) {
-			songarray += $csv.toObjects(data)
+			songarray += $.csv.toObjects(data)
 		});
 	}
 }
