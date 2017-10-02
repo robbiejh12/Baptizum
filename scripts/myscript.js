@@ -1,4 +1,4 @@
-console.log("version 1");
+console.log("version 2");
 var csvlist = "";
 var songarray = [];
 var played = [];
@@ -83,7 +83,7 @@ function loadFiles(files) {
 }
 
 function loadTrack(track) {
-	console.log(track.url);
+	console.log(track);
 	$("#player-audio").attr("src", track.url);
 	audio[0].load();
 	audio[0].play();
