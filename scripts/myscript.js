@@ -1,10 +1,12 @@
-console.log("version 4");
+console.log("version 5");
 var csvlist = "";
 var songarray = [];
 var played = [];
-var audio = $("#player");
+var audio;
 
 $(document).ready(function(){
+	
+	audio = $("#player");
 	
 	$("#checkbox-play").click(function(){
 		hideTab("checkbox");
