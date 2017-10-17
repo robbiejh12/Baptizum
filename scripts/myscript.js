@@ -19,7 +19,7 @@ $(document).ready(function(){
 	});
 	
 	$("#player-play").click(function(){
-		audio[0].pause();
+		audio.pause();
 		var number = 0;
 		var len = songarray.length;
 		do {
@@ -85,8 +85,8 @@ function loadFiles(files) {
 
 function loadTrack(track) {
 	console.log(track);
-	$("#player-audio").attr("src", track.url);
-	audio[0].load();
-	audio[0].play();
+	$("#player").attr("src", track.url);
+	audio.load();
+	audio.play();
 	$("#now-playing").html(track.artist + " - " + track.title);
 }
