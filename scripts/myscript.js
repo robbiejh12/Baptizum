@@ -94,10 +94,10 @@ function loadTrack() {
 
 function playTrack(track) {
 	console.log(track);
-	$("#player").attr("src", track.url);
-	audio.load();
+	$("#player").attr("src", track.Url);
+	audio.on();
 	audio.play();
-	$("#now-playing").html(track.artist + " - " + track.title);
+	$("#now-playing").html(track.Artist + " - " + track.Title);
 }
 
 function isPlaying(audioelem) {
