@@ -1,6 +1,6 @@
-console.log("version z");
+console.log("version 1");
 var csvlist = "";
-var tracks = [];
+var trackList = [];
 var played = [];
 var audio;
 
@@ -22,15 +22,8 @@ $(document).ready(function(){
 	
 	//player controls
 	$("#player-play").click(function(){
-		if (audio.isPlaying) {audio.pause();}
-		var number = 0;
-		var len = tracks.length;
-		do {
-			number = Math.floor((Math.random() * len));
-		}
-		while (played.includes(number));
-		played.push(number);
-		loadTrack(tracks[number]);
+		if (audio.isPlaying) {audio.pause()};
+		loadTrack();
 	});
 	
 	$("#player-back").click(function(){
@@ -59,7 +52,7 @@ function changeTab(x) {
 }
 
 function clearPlaylist() {
-	songarray = [];
+	trackList = [];
 	played = [];
 }
 
@@ -81,13 +74,25 @@ function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
-			tracks.push($.csv.toObjects(data));
+			trackList.push($.csv.toObjects(data));
 		});
 	}
-	console.log(songarray);
 }
 
-function loadTrack(track) {
+function loadTrack() {
+	var number = 0;
+	var len = trackList.length;
+	do {
+		number = Math.floor((Math.random() * len));
+	}
+	while (played.includes(number));
+	
+	played.push(number);
+	var track = tracklist[number];
+	playTrack(track);
+}
+
+function playTrack(track) {
 	console.log(track);
 	$("#player").attr("src", track.url);
 	audio.load();
