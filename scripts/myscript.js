@@ -1,4 +1,4 @@
-console.log("version 2");
+console.log("version 3");
 var csvlist = "";
 var trackList = [];
 var played = [];
@@ -22,7 +22,7 @@ $(document).ready(function(){
 	
 	//player controls
 	$("#player-play").click(function(){
-		if (audio.isPlaying) {audio.pause()};
+		if (audio.isPlaying) {audio[0].pause()};
 		loadTrack();
 	});
 	
@@ -96,7 +96,7 @@ function playTrack(track) {
 	console.log(track);
 	$("#player").attr("src", track.Url);
 	audio.on();
-	audio.play();
+	audio[0].play();
 	$("#now-playing").html(track.Artist + " - " + track.Title);
 }
 
