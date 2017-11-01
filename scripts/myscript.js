@@ -1,4 +1,4 @@
-console.log("version 3");
+console.log("version 4");
 var csvlist = "";
 var trackList = [];
 var played = [];
@@ -22,8 +22,13 @@ $(document).ready(function(){
 	
 	//player controls
 	$("#player-play").click(function(){
-		if (audio.isPlaying) {audio[0].pause()};
-		loadTrack();
+		if (audio.isPlaying) {
+			audio[0].pause()
+			loadTrack();
+		};
+		else {
+			audio[0].play();
+		};
 	});
 	
 	$("#player-back").click(function(){
@@ -31,11 +36,11 @@ $(document).ready(function(){
 	});
 	
 	$("#player-next").click(function(){
-		
+		loadTrack();
 	});
 	
 	$("#player-stop").click(function(){
-		
+		if (audio.isPlaying) {audio[0].pause()};
 	});
 	
 });
