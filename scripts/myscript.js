@@ -88,7 +88,7 @@ function loadTrack() {
 	while (played.includes(number));
 	
 	played.push(number);
-	var track = tracklist[number];
+	var track = trackList[number];
 	playTrack(track);
 }
 
