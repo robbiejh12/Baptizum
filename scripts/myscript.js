@@ -1,4 +1,4 @@
-console.log("version x");
+console.log("version z");
 var csvlist = "";
 var tracks = [];
 var played = [];
@@ -22,7 +22,7 @@ $(document).ready(function(){
 	
 	//player controls
 	$("#player-play").click(function(){
-		if audio.isPlaying(){audio.pause();}
+		if (audio.isPlaying) {audio.pause();}
 		var number = 0;
 		var len = tracks.length;
 		do {
