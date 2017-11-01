@@ -1,33 +1,36 @@
-console.log("version 2");
+console.log("version x");
 var csvlist = "";
-var songarray = [];
+var tracks = [];
 var played = [];
 var audio;
 
 $(document).ready(function(){
 	
+	//define audio element
 	audio = $("#player");
 	
+	//show/hide tabs
 	$("#checkbox-play").click(function(){
-		hideTab("checkbox");
 		buildPlaylist();
+		changeTab("player");
 	});
 	
 	$("#player-return").click(function(){
-		hideTab("player");
+		changeTab("checkbox");
 		clearPlaylist();
 	});
 	
+	//player controls
 	$("#player-play").click(function(){
-		audio.pause();
+		if audio.isPlaying(){audio.pause();}
 		var number = 0;
-		var len = songarray.length;
+		var len = tracks.length;
 		do {
 			number = Math.floor((Math.random() * len));
 		}
 		while (played.includes(number));
 		played.push(number);
-		loadTrack(songarray[number]);
+		loadTrack(tracks[number]);
 	});
 	
 	$("#player-back").click(function(){
@@ -44,12 +47,12 @@ $(document).ready(function(){
 	
 });
 
-function hideTab(x) {
-	if (x == "checkbox") {
+function changeTab(x) {
+	if (x == "player") {
 		$("#player-tab").removeClass("hidden").addClass("visible");
 		$("#checkbox-tab").removeClass("visible").addClass("hidden");
 	}
-	else if (x == "player") {
+	else if (x == "checkbox") {
 		$("#checkbox-tab").removeClass("hidden").addClass("visible");
 		$("#player-tab").removeClass("visible").addClass("hidden");
 	}
@@ -61,6 +64,7 @@ function clearPlaylist() {
 }
 
 function buildPlaylist() {
+	clearPlaylist();
 	var rpms = document.getElementsByClassName("rpm");
 	var files = [];
 	for (i=0;i<rpms.length;i++) {
@@ -77,7 +81,7 @@ function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
-			songarray.push($.csv.toObjects(data));
+			tracks.push($.csv.toObjects(data));
 		});
 	}
 	console.log(songarray);
@@ -89,4 +93,8 @@ function loadTrack(track) {
 	audio.load();
 	audio.play();
 	$("#now-playing").html(track.artist + " - " + track.title);
+}
+
+function isPlaying(audioelem) {
+	return !audioelem.paused;
 }
