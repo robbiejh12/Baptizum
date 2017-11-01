@@ -22,13 +22,13 @@ $(document).ready(function(){
 	
 	//player controls
 	$("#player-play").click(function(){
-		if (audio.isPlaying) {
-			audio[0].pause();
+		//if (audio.isPlaying) {
+		//	audio[0].pause();
 			loadTrack();
-		}
-		else {
-			audio[0].play();
-		}
+		//}
+		//else {
+		//	audio[0].play();
+		//}
 	});
 	
 	$("#player-back").click(function(){
@@ -85,7 +85,7 @@ function loadFiles(files) {
 }
 
 function loadTrack() {
-	var number = 0;
+	var number;
 	var len = trackList.length;
 	do {
 		number = Math.floor((Math.random() * len));
