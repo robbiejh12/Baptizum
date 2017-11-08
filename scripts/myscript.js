@@ -1,4 +1,4 @@
-console.log("version 4");
+console.log("version 5");
 var csvlist = "";
 var trackList = [];
 var played = [];
@@ -27,15 +27,16 @@ $(document).ready(function(){
 	$("#player-play").click(function(){
 		if (!started) {
 			loadTrack();
+			changeButton("pause");
 		}
 		else {
-			if (source.isPlaying) {
-				source.pause();
-			}
-			else {
-				source.play();
-			}
+			source.play();
 		}
+	});
+	
+	$("player-pause").click(function(){
+		source.pause();
+		changeButton("play");
 	});
 	
 	$("#player-back").click(function(){
@@ -60,6 +61,17 @@ function changeTab(x) {
 	else if (x == "checkbox") {
 		$("#checkbox-tab").removeClass("hidden").addClass("visible");
 		$("#player-tab").removeClass("visible").addClass("hidden");
+	}
+}
+
+function changeButton(x) {
+	if (x == "play") {
+		$("#player-play").removeClass("hidden").addClass("visible");
+		$("#player-pause").removeClass("visible").addClass("hidden");
+	}
+	else if (x == "pause") {
+		$("#player-pause").removeClass("hidden").addClass("visible");
+		$("#player-play").removeClass("visible").addClass("hidden");
 	}
 }
 
