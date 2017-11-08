@@ -1,4 +1,4 @@
-console.log("version 6");
+console.log("version 1");
 var csvlist = "";
 var trackList = [];
 var played = [];
@@ -92,6 +92,7 @@ function loadTrack() {
 	}
 	while (played.includes(number));
 	
+	console.log(number);
 	played.push(number);
 	var track = trackList[0][number];
 	playTrack(track);
