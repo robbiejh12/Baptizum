@@ -34,7 +34,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("player-pause").click(function(){
+	$("#player-pause").click(function(){
 		source.pause();
 		changeButton("play");
 	});
