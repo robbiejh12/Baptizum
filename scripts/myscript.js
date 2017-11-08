@@ -1,4 +1,4 @@
-console.log("version 3");
+console.log("version 4");
 var csvlist = "";
 var trackList = [];
 var played = [];
@@ -89,7 +89,7 @@ function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
-			trackList += ($.csv.toObjects(data));
+			trackList.push($.csv.toObjects(data));
 		});
 	}
 }
@@ -97,7 +97,7 @@ function loadFiles(files) {
 function loadTrack() {
 	started = true;
 	var number;
-	var len = trackList.length;
+	var len = trackList[0].length;
 	do {
 		number = Math.floor((Math.random() * len));
 	}
@@ -105,7 +105,7 @@ function loadTrack() {
 	
 	console.log(number);
 	played.push(number);
-	var track = trackList[number];
+	var track = trackList[0][number];
 	playTrack(track);
 }
 
