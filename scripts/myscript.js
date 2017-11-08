@@ -1,4 +1,4 @@
-console.log("version 1");
+console.log("version 2");
 var csvlist = "";
 var trackList = [];
 var played = [];
@@ -86,7 +86,7 @@ function loadFiles(files) {
 
 function loadTrack() {
 	var number;
-	var len = trackList.length;
+	var len = trackList[0].length;
 	do {
 		number = Math.floor((Math.random() * len));
 	}
