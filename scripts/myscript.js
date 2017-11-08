@@ -1,13 +1,16 @@
-console.log("version 2");
+console.log("version 3");
 var csvlist = "";
 var trackList = [];
 var played = [];
 var audio;
+var source;
+var started = false;
 
 $(document).ready(function(){
 	
-	//define audio element
+	//define audio & source elements
 	audio = $("#player");
+	source = audio[0];
 	
 	//show/hide tabs
 	$("#checkbox-play").click(function(){
@@ -22,13 +25,17 @@ $(document).ready(function(){
 	
 	//player controls
 	$("#player-play").click(function(){
-		//if (audio.isPlaying) {
-		//	audio[0].pause();
+		if (!started) {
 			loadTrack();
-		//}
-		//else {
-		//	audio[0].play();
-		//}
+		}
+		else {
+			if (source.isPlaying) {
+				source.pause();
+			}
+			else {
+				source.play();
+			}
+		}
 	});
 	
 	$("#player-back").click(function(){
@@ -59,10 +66,13 @@ function changeTab(x) {
 function clearPlaylist() {
 	trackList = [];
 	played = [];
+	started = false;
+	csvlist = "";
 }
 
 function buildPlaylist() {
 	clearPlaylist();
+	
 	var rpms = document.getElementsByClassName("rpm");
 	var files = [];
 	for (i=0;i<rpms.length;i++) {
@@ -71,7 +81,7 @@ function buildPlaylist() {
 			files.push(file);
 		}
 	}
-	var testF = ["test.csv"];
+	
 	loadFiles(files);
 }
 
@@ -79,14 +89,15 @@ function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
-			trackList.push($.csv.toObjects(data));
+			trackList += ($.csv.toObjects(data));
 		});
 	}
 }
 
 function loadTrack() {
+	started = true;
 	var number;
-	var len = trackList[0].length;
+	var len = trackList.length;
 	do {
 		number = Math.floor((Math.random() * len));
 	}
@@ -94,7 +105,7 @@ function loadTrack() {
 	
 	console.log(number);
 	played.push(number);
-	var track = trackList[0][number];
+	var track = trackList[number];
 	playTrack(track);
 }
 
@@ -102,7 +113,7 @@ function playTrack(track) {
 	console.log(track);
 	$("#player").attr("src", track.Url);
 	audio.on();
-	audio[0].play();
+	source.play();
 	$("#now-playing").html(track.Artist + " - " + track.Title);
 }
 
