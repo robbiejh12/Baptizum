@@ -1,7 +1,6 @@
-console.log("version 3"); //for checking github reloads
+console.log("version 4"); //for checking github reloads
 
 var csvlist = "";
-var trackList = [];
 var playList = [];
 var playIndex = 0;
 var audio;
@@ -80,7 +79,6 @@ function changeButton(x) {
 }
 
 function clearPlaylist() {
-	trackList = [];
 	playList = [];
 	playIndex = 0;
 	started = false;
@@ -103,20 +101,21 @@ function buildPlaylist() {
 }
 
 function loadFiles(files) {
+	var trackList = [];
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
 			trackList = trackList.concat($.csv.toObjects(data));
 		});
 	}
-	randomiseList();
+	randomiseList(trackList);
 }
 
-function randomiseList() {
+function randomiseList(trackList) {
 	playList = []
 	while (trackList.length>0) {
 		var rand = Math.floor(Math.random() * trackList.length);
-		playList.push(trackList.splice(rand,1));
+		playList.concat(trackList.splice(rand,1));
 	}
 }
 
