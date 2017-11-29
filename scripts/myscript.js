@@ -1,4 +1,4 @@
-console.log("version 6"); //for checking github reloads
+console.log("version 7"); //for checking github reloads
 
 
 var audio;
@@ -109,11 +109,14 @@ function loadFiles(files) {
 			trackList = trackList.concat($.csv.toObjects(data));
 		});
 	}
+	
+	console.log(trackList);
 	randomiseList(trackList);
 }
 
 function randomiseList(trackList) {
 	playList = [];
+	console.log(trackList);
 	while (trackList.length>0) {
 		var rand = Math.floor(Math.random() * trackList.length);
 		playList = playList.concat(trackList.splice(rand,1));
