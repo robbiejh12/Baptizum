@@ -113,7 +113,7 @@ function loadFiles(files) {
 }
 
 function randomiseList(trackList) {
-	playList = []
+	playList = [];
 	while (trackList.length>0) {
 		var rand = Math.floor(Math.random() * trackList.length);
 		playList = playList.concat(trackList.splice(rand,1));
@@ -121,7 +121,7 @@ function randomiseList(trackList) {
 }
 
 function playTrack() {
-	var track = playList[playIndex]
+	var track = playList[playIndex];
 	console.log(track);
 	source.attr("src", track.Url);
 	audio.on();
