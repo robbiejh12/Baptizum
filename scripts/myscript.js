@@ -2,7 +2,8 @@ console.log("version 2"); //for checking github reloads
 
 var csvlist = "";
 var trackList = [];
-var played = [];
+var playList = [];
+var playIndex = 0;
 var audio;
 var source;
 var started = false;
@@ -41,16 +42,17 @@ $(document).ready(function(){
 	});
 	
 	$("#player-back").click(function(){
-		var prev = played.pop();
-		playTrack(prev);
+		playIndex--;
+		playTrack();
 	});
 	
 	$("#player-next").click(function(){
-		loadTrack();
+		playIndex++
+		playTrack();
 	});
 	
 	$("#player-stop").click(function(){
-		if (audio.isPlaying) {source.pause()};
+		if (isPlaying(audio)) {source.pause()};
 	});
 	
 });
@@ -79,7 +81,8 @@ function changeButton(x) {
 
 function clearPlaylist() {
 	trackList = [];
-	played = [];
+	playList = [];
+	playIndex = 0;
 	started = false;
 	csvlist = "";
 }
@@ -106,31 +109,28 @@ function loadFiles(files) {
 			trackList = trackList.concat($.csv.toObjects(data));
 		});
 	}
+	randomiseList(trackList);
 }
 
-function loadTrack() {
-	started = true;
-	var number;
-	var len = trackList.length;
-	do {
-		number = Math.floor((Math.random() * len));
+function randomiseList(trackList) {
+	playList = []
+	while (trackList.length<0) {
+		var rand = Math.floor(Math.random() * trackList.length);
+		playList.push(trackList.splice(rand,1));
 	}
-	while (played.includes(number));
-	
-	console.log(number);
-	played.push(number);
-	var track = trackList[number];
-	playTrack(track);
+	playTrack()
 }
 
-function playTrack(track) {
+function playTrack() {
+	var track = playList[playIndex]
 	console.log(track);
-	$("#player").attr("src", track.Url);
+	source.attr("src", track.Url);
 	audio.on();
 	source.play();
 	$("#now-playing").html(track.Artist + " - " + track.Title);
-	$("#player").on("ended", function(){
-    		console.log('ended');
+	audio.on("ended", function(){
+    		playIndex++;
+		console.log('ended');
 	});
 }
 
