@@ -1,4 +1,4 @@
-console.log("version 7"); //for checking github reloads
+console.log("version 1"); //for checking github reloads
 
 
 var audio;
@@ -98,6 +98,7 @@ function buildPlaylist() {
 	}
 	
 	loadFiles(files);
+	console.log(files);
 }
 
 function loadFiles(files) {
