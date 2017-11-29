@@ -102,7 +102,7 @@ function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
-			trackList.concat($.csv.toObjects(data));
+			trackList = trackList.concat($.csv.toObjects(data));
 		});
 	}
 }
