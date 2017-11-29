@@ -109,10 +109,10 @@ function loadFiles(files) {
 			trackList = trackList.concat($.csv.toObjects(data));
 		});
 	}
-	randomiseList(trackList);
+	randomiseList();
 }
 
-function randomiseList(trackList) {
+function randomiseList() {
 	playList = []
 	while (trackList.length>0) {
 		var rand = Math.floor(Math.random() * trackList.length);
