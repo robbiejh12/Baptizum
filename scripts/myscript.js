@@ -1,4 +1,5 @@
-console.log("version 1");
+console.log("version 2"); //for checking github reloads
+
 var csvlist = "";
 var trackList = [];
 var played = [];
@@ -27,11 +28,11 @@ $(document).ready(function(){
 	$("#player-play").click(function(){
 		if (!started) {
 			loadTrack();
-			changeButton("pause");
 		}
 		else {
 			source.play();
 		}
+		changeButton("pause");
 	});
 	
 	$("#player-pause").click(function(){
@@ -129,7 +130,7 @@ function playTrack(track) {
 	source.play();
 	$("#now-playing").html(track.Artist + " - " + track.Title);
 	$("#player").on("ended", function(){
-    		loadTrack();
+    		console.log('ended');
 	});
 }
 
