@@ -1,4 +1,4 @@
-console.log("version 4"); //for checking github reloads
+console.log("version 5"); //for checking github reloads
 
 var csvlist = "";
 var playList = [];
@@ -115,7 +115,7 @@ function randomiseList(trackList) {
 	playList = []
 	while (trackList.length>0) {
 		var rand = Math.floor(Math.random() * trackList.length);
-		playList.concat(trackList.splice(rand,1));
+		playList = playList.concat(trackList.splice(rand,1));
 	}
 }
 
