@@ -1,10 +1,11 @@
-console.log("version 5"); //for checking github reloads
+console.log("version 6"); //for checking github reloads
 
-var csvlist = "";
-var playList = [];
-var playIndex = 0;
+
 var audio;
 var source;
+
+var playList = [];
+var playIndex = 0;
 var started = false;
 
 $(document).ready(function(){
@@ -82,7 +83,6 @@ function clearPlaylist() {
 	playList = [];
 	playIndex = 0;
 	started = false;
-	csvlist = "";
 }
 
 function buildPlaylist() {
@@ -102,6 +102,7 @@ function buildPlaylist() {
 
 function loadFiles(files) {
 	var trackList = [];
+	
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
