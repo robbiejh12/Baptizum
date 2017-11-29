@@ -40,7 +40,8 @@ $(document).ready(function(){
 	});
 	
 	$("#player-back").click(function(){
-		
+		var prev = played.pop();
+		playTrack(prev);
 	});
 	
 	$("#player-next").click(function(){
@@ -48,7 +49,7 @@ $(document).ready(function(){
 	});
 	
 	$("#player-stop").click(function(){
-		if (audio.isPlaying) {audio[0].pause()};
+		if (audio.isPlaying) {source.pause()};
 	});
 	
 });
@@ -101,7 +102,7 @@ function loadFiles(files) {
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
-			trackList.push($.csv.toObjects(data));
+			trackList.concat($.csv.toObjects(data));
 		});
 	}
 }
@@ -109,7 +110,7 @@ function loadFiles(files) {
 function loadTrack() {
 	started = true;
 	var number;
-	var len = trackList[0].length;
+	var len = trackList.length;
 	do {
 		number = Math.floor((Math.random() * len));
 	}
@@ -117,7 +118,7 @@ function loadTrack() {
 	
 	console.log(number);
 	played.push(number);
-	var track = trackList[0][number];
+	var track = trackList[number];
 	playTrack(track);
 }
 
@@ -127,7 +128,7 @@ function playTrack(track) {
 	audio.on();
 	source.play();
 	$("#now-playing").html(track.Artist + " - " + track.Title);
-	$("#player").bind("ended", function(){
+	$("#player").on("ended", function(){
     		loadTrack();
 	});
 }
