@@ -1,4 +1,4 @@
-console.log("version 5");
+console.log("version 1");
 var csvlist = "";
 var trackList = [];
 var played = [];
@@ -127,6 +127,9 @@ function playTrack(track) {
 	audio.on();
 	source.play();
 	$("#now-playing").html(track.Artist + " - " + track.Title);
+	$("#player").bind("ended", function(){
+    		loadTrack();
+	});
 }
 
 function isPlaying(audioelem) {
