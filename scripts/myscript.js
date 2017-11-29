@@ -28,7 +28,7 @@ $(document).ready(function(){
 	//player controls
 	$("#player-play").click(function(){
 		if (!started) {
-			loadTrack();
+			playTrack();
 		}
 		else {
 			source.play();
@@ -118,7 +118,6 @@ function randomiseList(trackList) {
 		var rand = Math.floor(Math.random() * trackList.length);
 		playList.push(trackList.splice(rand,1));
 	}
-	playTrack()
 }
 
 function playTrack() {
