@@ -1,5 +1,4 @@
-console.log("version 1"); //for checking github reloads
-
+console.log("version 2"); //for checking github reloads
 
 var audio;
 var source;
@@ -9,22 +8,22 @@ var playIndex = 0;
 var started = false;
 
 $(document).ready(function(){
-	
+
 	//define audio & source elements
 	audio = $("#player");
 	source = audio[0];
-	
+
 	//show/hide tabs
 	$("#checkbox-play").click(function(){
 		buildPlaylist();
 		changeTab("player");
 	});
-	
+
 	$("#player-return").click(function(){
 		changeTab("checkbox");
 		clearPlaylist();
 	});
-	
+
 	//player controls
 	$("#player-play").click(function(){
 		if (!started) {
@@ -35,26 +34,26 @@ $(document).ready(function(){
 		}
 		changeButton("pause");
 	});
-	
+
 	$("#player-pause").click(function(){
 		source.pause();
 		changeButton("play");
 	});
-	
+
 	$("#player-back").click(function(){
 		playIndex--;
 		playTrack();
 	});
-	
+
 	$("#player-next").click(function(){
 		playIndex++
 		playTrack();
 	});
-	
+
 	$("#player-stop").click(function(){
 		if (isPlaying(audio)) {source.pause()};
 	});
-	
+
 });
 
 function changeTab(x) {
@@ -87,7 +86,7 @@ function clearPlaylist() {
 
 function buildPlaylist() {
 	clearPlaylist();
-	
+
 	var rpms = document.getElementsByClassName("rpm");
 	var files = [];
 	for (i=0;i<rpms.length;i++) {
@@ -96,23 +95,22 @@ function buildPlaylist() {
 			files.push(file);
 		}
 	}
-	
-	loadFiles(files);
-	console.log(files);
+
+	loadFiles(files, randomiseList);
 }
 
 function loadFiles(files) {
 	var trackList = [];
-	
+
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
-			trackList = trackList.concat($.csv.toObjects(data));
+			trackList = trackList.concat($.csv.toObjects(data, function(tracklist) {
+				randomiseList(tracklist)
+				})
+			);
 		});
 	}
-	
-	console.log(trackList);
-	randomiseList(trackList);
 }
 
 function randomiseList(trackList) {
