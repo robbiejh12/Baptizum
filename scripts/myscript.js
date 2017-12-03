@@ -1,4 +1,4 @@
-console.log("version 2"); //for checking github reloads
+console.log("version 3"); //for checking github reloads
 
 var audio;
 var source;
@@ -27,7 +27,7 @@ $(document).ready(function(){
 	//player controls
 	$("#player-play").click(function(){
 		if (!started) {
-			playTrack();
+			randomiseList();
 		}
 		else {
 			source.play();
@@ -96,30 +96,26 @@ function buildPlaylist() {
 		}
 	}
 
-	loadFiles(files, randomiseList);
+	loadFiles(files);
 }
 
 function loadFiles(files) {
-	var trackList = [];
-
 	for (i=0;i<files.length;i++) {
 		var myurl = files[i];
 		$.get(myurl, function(data) {
-			trackList = trackList.concat($.csv.toObjects(data, function(tracklist) {
-				randomiseList(tracklist)
-				})
-			);
+			playList = playList.concat($.csv.toObjects(data));
 		});
 	}
 }
 
-function randomiseList(trackList) {
-	playList = [];
-	console.log(trackList);
-	while (trackList.length>0) {
-		var rand = Math.floor(Math.random() * trackList.length);
-		playList = playList.concat(trackList.splice(rand,1));
+function randomiseList() {
+	var tempList = [];
+	while (playList.length>0) {
+		var rand = Math.floor(Math.random() * playList.length);
+		tempList = tempList.concat(playList.splice(rand,1));
 	}
+	playList = tempList;
+	playTrack();
 }
 
 function playTrack() {
