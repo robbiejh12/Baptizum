@@ -1,4 +1,4 @@
-console.log("version 3"); //for checking github reloads
+console.log("version 4"); //for checking github reloads
 
 var audio;
 var source;
@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 	//define audio & source elements
 	audio = $("#player");
-	source = audio[0];
+	source = $("#source");
 
 	//show/hide tabs
 	$("#checkbox-play").click(function(){
