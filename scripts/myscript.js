@@ -1,4 +1,4 @@
-console.log("version 5"); //for checking github reloads
+console.log("version 1"); //for checking github reloads
 
 var audio;
 var source;
@@ -41,17 +41,22 @@ $(document).ready(function(){
 	});
 
 	$("#player-back").click(function(){
-		playIndex--;
+		if (playIndex>0) {playIndex--;}
 		playTrack();
 	});
 
 	$("#player-next").click(function(){
-		playIndex++
-		playTrack();
+		playIndex++;
+		if (playIndex>=playList.length) {
+			randomiseList();
+		}
+		else {
+			playTrack();
+		}
 	});
 
 	$("#player-stop").click(function(){
-		if (isPlaying(audio)) {source.pause()};
+		source.pause();
 	});
 
 });
