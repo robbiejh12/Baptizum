@@ -1,4 +1,4 @@
-console.log("version 4"); //for checking github reloads
+console.log("version 5"); //for checking github reloads
 
 var audio;
 var source;
@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 	//define audio & source elements
 	audio = $("#player");
-	source = $("#source");
+	source = audio[0];
 
 	//show/hide tabs
 	$("#checkbox-play").click(function(){
@@ -121,7 +121,7 @@ function randomiseList() {
 function playTrack() {
 	var track = playList[playIndex];
 	console.log(track);
-	source.attr("src", track.Url);
+	audio.attr("src", track.Url);
 	audio.on();
 	source.play();
 	$("#now-playing").html(track.Artist + " - " + track.Title);
