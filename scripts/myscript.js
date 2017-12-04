@@ -1,5 +1,3 @@
-console.log("version 2"); //for checking github reloads
-
 var audio;
 var source;
 
@@ -42,7 +40,7 @@ $(document).ready(function(){
 
 	$("#player-back").click(function(){
 		if (playIndex == 0) {
-			playIndex = (playlist.length);
+			playIndex = (playList.length);
 		}
 		playIndex--;
 		playTrack();
@@ -93,7 +91,6 @@ function clearPlaylist() {
 
 function buildPlaylist() {
 	clearPlaylist();
-
 	var rpms = document.getElementsByClassName("rpm");
 	var files = [];
 	for (i=0;i<rpms.length;i++) {
@@ -102,7 +99,6 @@ function buildPlaylist() {
 			files.push(file);
 		}
 	}
-
 	loadFiles(files);
 }
 
@@ -136,8 +132,4 @@ function playTrack() {
     		playIndex++;
 		console.log('ended');
 	});
-}
-
-function isPlaying(audioelem) {
-	return !audioelem.paused;
 }
