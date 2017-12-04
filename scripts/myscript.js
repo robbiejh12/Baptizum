@@ -1,4 +1,4 @@
-console.log("version 1"); //for checking github reloads
+console.log("version 2"); //for checking github reloads
 
 var audio;
 var source;
@@ -41,22 +41,24 @@ $(document).ready(function(){
 	});
 
 	$("#player-back").click(function(){
-		if (playIndex>0) {playIndex--;}
+		if (playIndex == 0) {
+			playIndex = (playlist.length);
+		}
+		playIndex--;
 		playTrack();
 	});
 
 	$("#player-next").click(function(){
 		playIndex++;
-		if (playIndex>=playList.length) {
-			randomiseList();
+		if (playIndex == playList.length) {
+			playIndex = 0;
 		}
-		else {
-			playTrack();
-		}
+		playTrack();
 	});
 
 	$("#player-stop").click(function(){
 		source.pause();
+		changeButton("play");
 	});
 
 });
